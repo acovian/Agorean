@@ -1,0 +1,55 @@
+{% extends 'message_app/navbar.html' %}
+{% block content %}
+
+	<div id = "main">
+
+		<div id = "bodymain">
+
+		<br>
+		<h1>{{user.username}}</h1>
+		<p>{{user.description}}</p>
+
+		{% if user.id == request.session.user.id %}
+			<form action = "{% url 'message_app:newmessage' %}" method="post">
+				{% csrf_token %}
+				<textarea placeholder = "Write a message to post on {{user.username}}'s wall." name = "message"></textarea>
+				<br>
+				<input type = 'submit' value = "Post Message">
+			</form>
+		{% endif %}
+
+		{% for message in messages %}
+			<a href ="{% url 'user_app:user' id=message.user.id %}">{{message.user.username}}</a>
+			{{message.message}}<br>
+			({{message.messagelikes.count}} likes)
+				{% for like in message.messagelikes.all %}
+					{% if like.user.id == request.session.user.id %}
+						You liked this
+					{% endif %}
+				{% endfor %}
+
+					<form action = "{% url 'message_app:like' message.id %}" method="post">
+					{% csrf_token %}
+					<input type = "submit" value = "LIKE">
+					<input type = "hidden" name = "message" value = "{{message.id}}">
+					<input type = "hidden" name = "user" value = "{{request.session.user.id}}">
+				</form>
+
+			{% for comment in message.comment.all %}
+			<div id = "comment">
+				<a href="{% url 'user_app:user' id=comment.user.id %}">{{comment.user.username}}</a>
+				{{comment.comment}}<br>
+			</div>
+			{% endfor %}
+			<form action = "{% url 'message_app:comment' id=request.session.user.id %}" method="post">
+				{% csrf_token %}
+				<input id = 'commenttext' type = 'text' name = 'comment' placeholder = "Post a Comment">
+				<input type = 'hidden' name='message' value = "{{message.id}}">
+				<input type = 'submit' value = "Comment">
+				</form>
+			{% endfor %}
+
+		</div>
+
+	</div>
+{% endblock %}

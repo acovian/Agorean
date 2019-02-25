@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>Welcome | Camaraderie Culture</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'user_app/css/index.css' %}">
+</head>
+<body>
+  <div id = "navbar">
+  <img id="squid" src="../media/agorean_squid.jpg" alt="">
+  <div id="agorean">
+    <a id="agorean" href="{% url 'message_app:index' %}">A G O R E A N</a>
+  </div>
+  </div>
+	<hr>
+
+	<div id = "leftside">
+		<h2>WANT TO JOIN?</h2>
+		<p>Agorean is a free social media website that you can use to share your stories with the world! Become a member to get in on the action. You can deactivate your account anytime.</p>
+
+    <div id = "errors">
+		{% for message in messages %}
+			{{message}} <br>
+		{% endfor %}
+		</div>
+
+		<form action = "{% url 'user_app:register' %}" method="post">
+			{% csrf_token %}
+			<input type = 'email' name = 'email' placeholder='Email'><br>
+			<input type = 'text' name = 'username' placeholder='Username'><br>
+			<input type = 'text' name = 'first_name' placeholder='First Name'><br>
+			<input type = 'text' name ='last_name' placeholder='Last Name'><br>
+			<input type = 'password' name = 'password' placeholder='Password'><br>
+			<input type = 'password' name = 'confirm_password' placeholder='Confirm Password'><br>
+			<input id = 'register' type = 'submit' value="Let's Go!">
+		</form>
+
+	</div>
+
+
+	<div id = "rightside">
+
+		<div id = "rightinner">
+
+		<h2>ALREADY WITH US?</h2>
+		<form action = "{% url 'user_app:login' %}" method="post">
+			{% csrf_token %}
+			<input type = 'email' name = 'email' placeholder = 'Email'><br>
+			<input type = 'password' name = 'password' placeholder = 'Password'><br>
+			<input id ='login' type = 'submit' value = "Log In">
+		</form>
+
+		</div>
+
+	</div>
+
+
+
+</body>
+</html>
