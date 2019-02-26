@@ -1,5 +1,7 @@
 {% extends 'message_app/navbar.html' %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'user_app/user.css' %}">
 
 	<div id = "main">
 
@@ -7,6 +9,7 @@
 
 		<br>
 		<h1>{{user.username}}</h1>
+    <h3>{{user.first_name}} {{user.last_name}}</h3>
 		<p>{{user.description}}</p>
 
 		{% if user.id == request.session.user.id %}

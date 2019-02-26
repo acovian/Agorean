@@ -2,13 +2,16 @@
 
 {% block content %}
 
+{% load static %}
+<link rel="stylesheet" href="{% static 'message_app/popular.css' %}">
+
   <div id = "main">
 
     <br>
     <div id = "posts">
 
     <h1>Popular Posts</h1>
-    <p>This page features the posts that have generated the most likes.</p>
+    <p id = 'info'>This page features the posts that have generated the most likes.</p>
     <br>
 
     {% for message in posts %}
