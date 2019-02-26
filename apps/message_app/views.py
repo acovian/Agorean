@@ -16,7 +16,7 @@ def newmessage(request):
     thing = request.session['user']
     user_id = thing['id']
     Message.objects.validate(request.POST['message'], user_id)
-    return redirect(reverse('message_app:index'))
+    return redirect(request.META.get('HTTP_REFERER'))
 
 def delete(request, message_id):
     valid = Message.objects.destroy_message(message_id)
@@ -41,7 +41,6 @@ def popular(request):
     return redirect(reverse('message_app:popularpage'))
 
 def popularpage(request):
-    thing = request.session['user']
     context = {
         'posts' : Message.objects.annotate(thing=Count('messagelikes')).order_by('-thing')
     }

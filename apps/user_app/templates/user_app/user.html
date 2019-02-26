@@ -3,56 +3,84 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'user_app/user.css' %}">
 
-	<div id = "main">
+  <div id = "main">
 
-		<div id = "bodymain">
+    <div id = "bodymain">
 
-		<br>
-		<h1>{{user.username}}</h1>
-    <h3>{{user.first_name}} {{user.last_name}}</h3>
-		<p>{{user.description}}</p>
+      <br>
+      <h1>{{user.username}}</h1>
+      <h3>{{user.first_name}} {{user.last_name}}</h3>
 
-		{% if user.id == request.session.user.id %}
-			<form action = "{% url 'message_app:newmessage' %}" method="post">
-				{% csrf_token %}
-				<textarea placeholder = "Write a message to post on {{user.username}}'s wall." name = "message"></textarea>
-				<br>
-				<input type = 'submit' value = "Post Message">
-			</form>
-		{% endif %}
+      {% if user.id == request.session.user.id %}
+        <form action = "{% url 'message_app:newmessage' %}" method="post">
+          {% csrf_token %}
+          <textarea id = "tomessage" name = "message" placeholder="Write something to share with your friends"></textarea>
+          <br>
+          <input id = "postmessage" type = "submit" value = "Post Message">
+        </form>
+      {% endif %}
 
-		{% for message in messages %}
-			<a href ="{% url 'user_app:user' id=message.user.id %}">{{message.user.username}}</a>
-			{{message.message}}<br>
-			({{message.messagelikes.count}} likes)
-				{% for like in message.messagelikes.all %}
-					{% if like.user.id == request.session.user.id %}
-						You liked this
-					{% endif %}
-				{% endfor %}
+      {% for message in messages %}
+      <div id = "singlepost">
+      <a id = "messageuser" href = "{% url 'user_app:user' id=message.user.id %}">{{message.user.username}}</a>
+      <div id="timestamp">
+        {{message.created_at}}<br>
+      </div>
+      <div id = "singlemessage">{{message.message}}</div>
 
-					<form action = "{% url 'message_app:like' message.id %}" method="post">
-					{% csrf_token %}
-					<input type = "submit" value = "LIKE">
-					<input type = "hidden" name = "message" value = "{{message.id}}">
-					<input type = "hidden" name = "user" value = "{{request.session.user.id}}">
-				</form>
 
-			{% for comment in message.comment.all %}
-			<div id = "comment">
-				<a href="{% url 'user_app:user' id=comment.user.id %}">{{comment.user.username}}</a>
-				{{comment.comment}}<br>
-			</div>
-			{% endfor %}
-			<form action = "{% url 'message_app:comment' id=request.session.user.id %}" method="post">
-				{% csrf_token %}
-				<input id = 'commenttext' type = 'text' name = 'comment' placeholder = "Post a Comment">
-				<input type = 'hidden' name='message' value = "{{message.id}}">
-				<input type = 'submit' value = "Comment">
-				</form>
-			{% endfor %}
+        <form action = "{% url 'message_app:like' message.id %}" method="post">
+          {% csrf_token %}
+          <input id = "likepost" type = "submit" value = "LIKE">
+          <input type = "hidden" name = "message" value = "{{message.id}}">
+          <input type = "hidden" name = "user" value = "{{request.session.user.id}}">
+        </form>
 
-		</div>
+      <div id = "bottompost">
+        {{message.messagelikes.count}} like{{message.messagelikes.count|pluralize}}
+
+          {% for like in message.messagelikes.all %}
+            {% if like.user.id == request.session.user.id %}
+              - <u>You liked this</u>
+            {% endif %}
+          {% endfor %}
+      </div>
+
+        <hr>
+
+        Comments:
+
+        {% for comment in message.comment.all %}
+        <div id = "comment">
+          <hr>
+          <a id = "commentuser" href = "{% url 'user_app:user' id=comment.user.id %}">{{comment.user.username}}</a>
+          {{comment.comment}}<br>
+        </div>
+        {% empty %}
+          <p>0 Comments</p>
+        {% endfor %}
+
+
+          <form id = "commentaction" action = "{% url 'message_app:comment' message.id %}" method="post">
+            {% csrf_token %}
+            <input id = "writecomment" type = 'text' name = 'comment' placeholder = "Post a Comment">
+            <input type = "hidden" name = "user" value = "{{request.session.user.id}}">
+            <input id = "postcomment" type = 'submit' value = "Comment">
+          </form>
+        <br>
+
+      {% if message.user.id == request.session.id %}
+        <a href="{% url 'message_app:delete' message.id %}">DELETE</a>
+      {% endif %}
+
+      </div>
+      {% empty %}
+
+      <p>No messages yet.</p>
+
+
+      {% endfor %}
+      </div>
 
 	</div>
 {% endblock %}

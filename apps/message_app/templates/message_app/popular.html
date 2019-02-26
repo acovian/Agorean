@@ -29,7 +29,7 @@
         </form>
 
       <div id = "bottompost">
-        {{message.messagelikes.count}} likes
+        {{message.messagelikes.count}} like{{message.messagelikes.count|pluralize}}
 
           {% for like in message.messagelikes.all %}
             {% if like.user.id == request.session.user.id %}

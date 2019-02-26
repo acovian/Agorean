@@ -49,9 +49,10 @@ def login(request):
 
 def user(request, id):
     user = User.objects.get(id=id)
+    # 'posts' : Message.objects.annotate(thing=Count('messagelikes')).order_by('-thing')
     context = {
         'user': user,
-        'messages': Message.objects.filter(user=User.objects.get(id=id))
+        'messages': Message.objects.filter(user=User.objects.get(id=id)).order_by('-created_at')
     }
     return render(request, 'user_app/user.html', context)
 
