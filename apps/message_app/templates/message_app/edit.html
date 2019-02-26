@@ -1,0 +1,24 @@
+{% extends 'message_app/navbar.html' %}
+{% block page_title %}Agorean | Edit Post{% endblock page_title %}
+{% block content %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'message_app/edit.css' %}">
+
+  <div id="main">
+    <br>
+
+    <div id="posts">
+
+      Edit Post <hr>
+      <div id="postsuser">{{message.user.username}}</div><br>
+      {{message.created_at}}<hr>
+      <form action="{% url 'message_app:update_information' message.id %}" method="post">
+        {% csrf_token %}
+        <textarea id="tomessage" name="message" rows="8" cols="80">{{message.message}}</textarea>
+        <input id="postmessage" type="submit" name="" value="Update">
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

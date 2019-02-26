@@ -1,4 +1,6 @@
 {% extends 'message_app/navbar.html' %}
+
+{% block page_title %}Agorean | Home{% endblock page_title %}
 {% block content %}
   {% load static %}
   <link rel="stylesheet" href="{% static 'message_app/index.css' %}">
@@ -10,7 +12,7 @@
     <a id = "postsuser" href = "{% url 'user_app:user' id=request.session.user.id %}">{{request.session.user.username}}</a>:<br>
     <form action = "{% url 'message_app:newmessage' %}" method="post">
       {% csrf_token %}
-      <textarea id = "tomessage" name = "message" placeholder="Write something to share with your friends"></textarea>
+      <textarea id = "tomessage" name = "message" placeholder="Write something to share with the community."></textarea>
       <br>
       <input id = "postmessage" type = "submit" value = "Post Message">
     </form>
@@ -31,6 +33,7 @@
           <input type = "hidden" name = "message" value = "{{message.id}}">
           <input type = "hidden" name = "user" value = "{{request.session.user.id}}">
         </form>
+
 
       <div id = "bottompost">
         {{message.messagelikes.count}} like{{message.messagelikes.count|pluralize}}
@@ -66,10 +69,10 @@
             <input id = "postcomment" type = 'submit' value = "Comment">
           </form>
         <br>
-
-      {% if message.user.id == request.session.id %}
-        <a href="{% url 'message_app:delete' message.id %}">DELETE</a>
-      {% endif %}
+        {% if message.user.id == request.session.user.id %}
+        <a id="edit" href="{% url 'message_app:edit' message.id %}">EDIT POST</a>
+        <a id="delete" href="{% url 'message_app:delete' message.id %}">DELETE POST</a>
+        {% endif %}
 
       </div>
     {% empty %}

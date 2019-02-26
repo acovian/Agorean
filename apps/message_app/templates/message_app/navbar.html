@@ -2,7 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>{% block page_title %}{% endblock page_title %}</title>
+    <link rel="shortcut icon" href="../media/favicon.ico">
     {% load static %}
     <link rel="stylesheet" href="{% static 'message_app/navbar.css' %}">
   </head>

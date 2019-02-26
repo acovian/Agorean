@@ -20,7 +20,7 @@ def newmessage(request):
 
 def delete(request, message_id):
     valid = Message.objects.destroy_message(message_id)
-    return redirect(reverse('message_app:index'))
+    return redirect(request.META.get('HTTP_REFERER'))
 
 def like(request, message_id):
     thing = request.session['user']
@@ -45,6 +45,16 @@ def popularpage(request):
         'posts' : Message.objects.annotate(thing=Count('messagelikes')).order_by('-thing')
     }
     return render(request, 'message_app/popular.html', context)
+
+def edit(request, message_id):
+	context = {
+		'message': Message.objects.get(id=message_id)
+	}
+	return render(request, 'message_app/edit.html', context)
+
+def update_information(request, message_id):
+    Message.objects.update_information(request.POST, message_id)
+    return redirect(reverse('message_app:index'))
 
 def about(request):
     return render(request, 'message_app/about.html')

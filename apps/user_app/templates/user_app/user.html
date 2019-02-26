@@ -1,4 +1,5 @@
 {% extends 'message_app/navbar.html' %}
+{% block page_title %}Agorean | {{user.username}}{% endblock page_title %}
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'user_app/user.css' %}">
@@ -12,9 +13,16 @@
       <h3>{{user.first_name}} {{user.last_name}}</h3>
 
       {% if user.id == request.session.user.id %}
+      <div id="settings">
+        <img id="gear" src="../media/gear.jpg" alt="">
+        <a id="settings_words" href="{% url 'user_app:settings' user.id %}">Settings</a>
+      </div>
+      {% endif %}
+
+      {% if user.id == request.session.user.id %}
         <form action = "{% url 'message_app:newmessage' %}" method="post">
           {% csrf_token %}
-          <textarea id = "tomessage" name = "message" placeholder="Write something to share with your friends"></textarea>
+          <textarea id = "tomessage" name = "message" placeholder="Write something to share with the community."></textarea>
           <br>
           <input id = "postmessage" type = "submit" value = "Post Message">
         </form>
@@ -24,7 +32,7 @@
       <div id = "singlepost">
       <a id = "messageuser" href = "{% url 'user_app:user' id=message.user.id %}">{{message.user.username}}</a>
       <div id="timestamp">
-        {{message.created_at}}<br>
+        {{message.created_at}}<br><br>
       </div>
       <div id = "singlemessage">{{message.message}}</div>
 
@@ -69,8 +77,9 @@
           </form>
         <br>
 
-      {% if message.user.id == request.session.id %}
-        <a href="{% url 'message_app:delete' message.id %}">DELETE</a>
+      {% if message.user.id == user.id %}
+        <a id="edit" href="{% url 'message_app:edit' message.id %}">EDIT POST</a>
+        <a id="delete" href="{% url 'message_app:delete' message.id %}">DELETE POST</a>
       {% endif %}
 
       </div>

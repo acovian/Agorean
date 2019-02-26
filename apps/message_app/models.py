@@ -21,6 +21,12 @@ class MessageManager(models.Manager):
         message.delete()
         return True
 
+    def update_information(self, data, id):
+        message = self.filter(id=id)
+        if data['message']:
+            message.update(message=data['message'])
+        return True
+
 class Message(models.Model):
     message = models.TextField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)

@@ -115,3 +115,23 @@ h1{
       font-size: 13px;
       margin-left: -5px;
     }
+
+    #delete{
+      font-size: 12px;
+      display: inline-block;
+      background-color: red;
+      color: white;
+      padding: 5px 10px 5px 10px;
+      border-style: none;
+      margin-bottom: 10px;
+    }
+
+    #edit{
+      font-size: 12px;
+      display: inline-block;
+      background-color: #41d117;
+      color: white;
+      padding: 5px 10px 5px 10px;
+      border-style: none;
+      margin-bottom: 10px;
+    }

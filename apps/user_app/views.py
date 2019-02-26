@@ -56,6 +56,20 @@ def user(request, id):
     }
     return render(request, 'user_app/user.html', context)
 
+def settings(request, user_id):
+	context = {
+		'user': User.objects.get(id=user_id)
+	}
+	return render(request, 'user_app/settings.html', context)
+
+def update_information(request, user_id):
+    User.objects.update_information(request.POST, user_id)
+    return redirect(reverse('user_app:user', kwargs={'id':user_id}))
+
+def delete(request, user_id):
+    User.objects.destroy_user(user_id)
+    return redirect(reverse('user_app:logout'))
+
 def logout(request):
     del request.session['user']
     return redirect(reverse('user_app:index'))

@@ -1,5 +1,5 @@
 {% extends 'message_app/navbar.html' %}
-
+{% block page_title %}Agorean | Popular{% endblock page_title %}
 {% block content %}
 
 {% load static %}
@@ -63,8 +63,9 @@
           </form>
         <br>
 
-      {% if message.user.id == request.session.id %}
-        <a href="{% url 'message_app:delete' message.id %}">DELETE</a>
+      {% if message.user.id == request.session.user.id %}
+        <a id="edit" href="{% url 'message_app:edit' message.id %}">EDIT POST</a>
+        <a id="delete" href="{% url 'message_app:delete' message.id %}">DELETE POST</a>
       {% endif %}
 
       </div>

@@ -55,6 +55,26 @@ class UserManager(models.Manager):
             errors.append('* account does not yet exist')
             return (False, errors)
 
+    def update_information(self, data, id):
+        user = self.filter(id=id)
+        if data['username']:
+            user.update(username=data['username'])
+        if data['first_name']:
+            user.update(first_name=data['first_name'])
+        if data['last_name']:
+            user.update(last_name=data['last_name'])
+        if data['email']:
+            user.update(email=data['email'])
+        if data['password']:
+            user.update(password=data['password'])
+        return True
+
+    def destroy_user(self, user_id):
+        user_id = int(user_id)
+        user = User.objects.get(id=user_id)
+        user.delete()
+        return True
+
 class User(models.Model):
     email = models.CharField(max_length=255)
     username = models.CharField(max_length=125)

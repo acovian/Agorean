@@ -13,6 +13,23 @@ h3{
   color: #404853;
 }
 
+#settings{
+  display: inline-block;
+  float: right;
+  margin-top: -100px;
+  color: #6799ff;
+  font-weight: bold;
+}
+#gear{
+  display: inline;
+  width: 15px;
+  margin-top: 5px;
+}
+#settings_words{
+    color: #6799ff;
+}
+
+
 #bodymain{
   background-color: white;
   width: 650px;
@@ -48,7 +65,9 @@ h3{
   #tomessage{
     display: inline-block;
     width: 640px;
+    height: 50px;
     font-size: 16px;
+    border-radius: 5px;
     resize: none;
   }
 
@@ -120,4 +139,22 @@ h3{
       padding: 4px;
       font-size: 13px;
       margin-left: -5px;
+    }
+    #delete{
+      font-size: 12px;
+      display: inline-block;
+      background-color: red;
+      color: white;
+      padding: 5px 10px 5px 10px;
+      border-style: none;
+      margin-bottom: 10px;
+    }
+    #edit{
+      font-size: 12px;
+      display: inline-block;
+      background-color: #41d117;
+      color: white;
+      padding: 5px 10px 5px 10px;
+      border-style: none;
+      margin-bottom: 10px;
     }
