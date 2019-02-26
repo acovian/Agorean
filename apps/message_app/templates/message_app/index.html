@@ -1,7 +1,7 @@
 {% extends 'message_app/navbar.html' %}
 {% block content %}
   {% load static %}
-
+  <link rel="stylesheet" href="{% static 'message_app/index.css' %}">
   <div id = "main">
 
     <br>
@@ -19,6 +19,9 @@
 
       <div id = "singlepost">
       <a id = "messageuser" href = "{% url 'user_app:user' id=message.user.id %}">{{message.user.username}}</a>
+      <div id="timestamp">
+        {{message.created_at}}<br>
+      </div>
       <div id = "singlemessage">{{message.message}}</div>
 
 
