@@ -1,24 +1,23 @@
 {% extends 'message_app/navbar.html' %}
+  {% block page_title %}Agorean | {{user.username}}/Settings{% endblock page_title %}
+  {% block content %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'user_app/settings.css' %}">
 
-{% block content %}
+    <div id="main">
 
-{% load static %}
-<link rel="stylesheet" href="{% static 'user_app/settings.css' %}">
-
-  <div id="main">
-
-    <div id="main_body">
-      <h3>Edit {{user.username}}</h3>
-      <form id="edit_form" action="{% url 'user_app:update_information' user.id %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="username" value="{{user.username}}"><br>
-        <input type="text" name="first_name" value="{{user.first_name}}"><br>
-        <input type="text" name="last_name" value="{{user.last_name}}"><br>
-        <input type="email" name="email" value="{{user.email}}"><br>
-        <input type="password" name="password" value="{{user.password}}"><br>
-        <input id="submit" type="submit" name="" value="Save Changes">
-      </form>
-      <a id="delete_account" href="{% url 'user_app:delete' user.id %}">! DELETE ACCOUNT !</a>
+      <div id="main_body">
+        <h3>Edit {{user.username}}</h3>
+        <form id="edit_form" action="{% url 'user_app:update_information' user.id %}" method="post">
+          {% csrf_token %}
+          <input type="text" name="username" value="{{user.username}}"><br>
+          <input type="text" name="first_name" value="{{user.first_name}}"><br>
+          <input type="text" name="last_name" value="{{user.last_name}}"><br>
+          <input type="email" name="email" value="{{user.email}}"><br>
+          <input type="password" name="password" value="{{user.password}}"><br>
+          <input id="submit" type="submit" name="" value="Save Changes">
+        </form>
+        <a id="delete_account" href="{% url 'user_app:delete' user.id %}">! DELETE ACCOUNT !</a>
+      </div>
     </div>
-  </div>
-{% endblock %}
+  {% endblock %}

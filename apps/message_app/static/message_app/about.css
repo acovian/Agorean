@@ -2,7 +2,7 @@
   background-color: #404853;
   border-top-style: solid;
   border-width: .5px;
-  height: 555px;
+  height: 700px;
   margin-top: -10px;
 }
 
@@ -16,4 +16,10 @@ h1{
     margin-top: 50px;
     padding: 50px 150px 100px 100px;
     width: 650px;
+    text-align: center;
+  }
+
+  #squid{
+    width: 200px;
+    height: 200px;
   }
