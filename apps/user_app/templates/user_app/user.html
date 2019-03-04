@@ -28,11 +28,13 @@
         </form>
       {% endif %}
 
+      <h4>{{user.first_name}}'s posts:</h4>
+
       {% for message in messages %}
       <div id = "singlepost">
       <a id = "messageuser" href = "{% url 'user_app:user' id=message.user.id %}">{{message.user.username}}</a>
       <div id="timestamp">
-        {{message.created_at}}<br><br>
+        {{message.created_at|timesince}} ago<br><br>
       </div>
       <div id = "singlemessage">{{message.message}}</div>
 

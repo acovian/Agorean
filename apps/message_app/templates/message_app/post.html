@@ -1,0 +1,58 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'message_app/post.css' %}">
+<div id = "singlepost">
+<a id = "messageuser" href = "{% url 'user_app:user' id=message.user.id %}">{{message.user.username}}</a>
+<div id="timestamp">
+  {{message.created_at|timesince}} ago<br>
+</div>
+<div id = "singlemessage">{{message.message}}</div>
+
+
+  <form action = "{% url 'message_app:like' message.id %}" method="post">
+    {% csrf_token %}
+    <input id = "likepost" type = "submit" value = "LIKE">
+    <input type = "hidden" name = "message" value = "{{message.id}}">
+    <input type = "hidden" name = "user" value = "{{request.session.user.id}}">
+  </form>
+
+
+<div id = "bottompost">
+  {{message.messagelikes.count}} like{{message.messagelikes.count|pluralize}}
+
+    {% for like in message.messagelikes.all %}
+      {% if like.user.id == request.session.user.id %}
+        - <u>You liked this</u>
+      {% endif %}
+    {% endfor %}
+</div>
+
+  <hr>
+
+  Comments:
+
+  {% for comment in message.comment.all %}
+  <div id = "comment">
+    <hr>
+    <a id = "commentuser" href = "{% url 'user_app:user' id=comment.user.id %}">{{comment.user.username}}</a>
+    {{comment.comment}}<br>
+  </div>
+  {% empty %}
+    <p>0 Comments</p>
+  {% endfor %}
+
+  {% for message in messages %}
+    {{message}}
+  {% endfor %}
+    <form id = "commentaction" action = "{% url 'message_app:comment' message.id %}" method="post">
+      {% csrf_token %}
+      <input id = "writecomment" type = 'text' name = 'comment' placeholder = "Post a Comment">
+      <input type = "hidden" name = "user" value = "{{request.session.user.id}}">
+      <input id = "postcomment" type = 'submit' value = "Comment">
+    </form>
+  <br>
+  {% if message.user.id == request.session.user.id %}
+  <a id="edit" href="{% url 'message_app:edit' message.id %}">EDIT POST</a>
+  <a id="delete" href="{% url 'message_app:delete' message.id %}">DELETE POST</a>
+  {% endif %}
+
+</div>

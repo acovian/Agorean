@@ -29,6 +29,10 @@ class UserManager(models.Manager):
             errors.append('* passwords do not match')
         if self.filter(email=data['email']).exists():
             errors.append('* email already exists in database')
+        if self.filter(password=data['password']).exists():
+            errors.append('* password is already taken')
+        if self.filter(username=data['username']).exists():
+            errors.append('* username is already taken')
         if errors:
             return (False, errors)
         else:
