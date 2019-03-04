@@ -9,7 +9,6 @@
     <br>
     <div id = "posts">
 
-    <a id = "postsuser" href = "{% url 'user_app:user' id=request.session.user.id %}">{{request.session.user.username}}</a>:<br>
     <form action = "{% url 'message_app:newmessage' %}" method="post">
       {% csrf_token %}
       <textarea id = "tomessage" name = "message" placeholder="Write something to share with the community."></textarea>

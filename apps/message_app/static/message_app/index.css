@@ -7,13 +7,7 @@
   border-width: .5px;
   margin-top: -10px;
   padding: 10px;
-}
-
-#postsuser{
-  color: #6799ff;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 20px;
+  margin: -10px;
 }
 
 #postmessage{
@@ -26,8 +20,9 @@
   margin-bottom: 10px;
   margin-right: 5px;
 }
-  #messageuser{
+  #postsuser{
     display: block;
+    font-size: 30px;
     font-weight: bold;
     color: #6799ff;
     text-decoration: none;

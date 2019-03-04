@@ -13,6 +13,13 @@
   font-size: 12px;
 }
 
+#messageuser{
+  color: #6799ff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px;
+}
+
 #singlemessage{
   margin-bottom: 10px;
 }
