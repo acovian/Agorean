@@ -11,7 +11,7 @@
 
     <form action = "{% url 'message_app:newmessage' %}" method="post">
       {% csrf_token %}
-      <textarea id = "tomessage" name = "message" placeholder="Write something to share with the community."></textarea>
+      <textarea id = "tomessage" name = "message" placeholder="Hi {{ request.session.user.username }}. Write something to share with the community."></textarea>
       <br>
       <input id = "postmessage" type = "submit" value = "Post Message">
     </form>

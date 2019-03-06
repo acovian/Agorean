@@ -18,6 +18,10 @@ a{
   margin-left: 10px;
 }
 
+#main{
+  height: 100%;
+}
+
 #leftside{
   display: inline-block;
   width:600px;
@@ -45,18 +49,13 @@ a{
   #squid{
     width: 350px;
     height: 350px;
-    text-align: center;
     border-radius: 100%;
-    vertical-align: top;
-    align-self: flex-end;
     animation-duration: 2s;
     animation-iteration-count: infinite;
-    transform-origin: bottom;
   }
 
   .bounce {
         animation-name: bounce;
-        animation-timing-function: ease;
     }
 
     @keyframes bounce {
@@ -64,7 +63,6 @@ a{
         10%  { transform: scale(1.1,.9) translateY(0); }
         30%  { transform: scale(.9,1.1) translateY(0px); }
         50%  { transform: scale(1,1)    translateY(0); }
-
     }
 
   #errors{
@@ -76,13 +74,13 @@ a{
 
   #rightside{
     display: inline-block;
-    margin-left: 200px;
+    float:right;
     margin-top: -10px;
     vertical-align: top;
     padding: 55px;
     padding-top: 100px;
     background-color: #404853;
-    height: 67%;
+    height: 100%;
   }
     #rightside input{
       font-size: 20px;

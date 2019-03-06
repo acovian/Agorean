@@ -24,12 +24,10 @@ h1{
     height: 200px;
     animation-duration: 2s;
     animation-iteration-count: infinite;
-    transform-origin: bottom;
   }
 
   .bounce {
         animation-name: bounce;
-        animation-timing-function: ease;
     }
 
     @keyframes bounce {
