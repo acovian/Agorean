@@ -4,6 +4,7 @@ html, body{
 
 * {
   font-size: 17px;
+  font-family: times;
 }
 #main{
   background-color: #404853;
@@ -23,9 +24,19 @@ html, body{
   width: 650px;
 }
 
-input{
-  border-style: none;
+#gear{
+  width: 55px;
+  border-radius: 100%;
+  -webkit-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); }
+}
+
+.inputclass{
+  border: none;
   margin-bottom: 10px;
+  color: #404853;
 }
 
 #submit{
@@ -40,7 +51,7 @@ input{
 #delete_account{
   display: inline-block;
   float: right;
-  margin-top: -100px;
+  margin-top: -140px;
   background-color: red;
   padding: 10px;
   color: white;

@@ -1,5 +1,5 @@
-html, body{
-  height: 100%;
+*{
+  font-family: times;
 }
 
 #main{
@@ -28,6 +28,7 @@ h3{
 #gear{
   display: inline;
   width: 15px;
+  border-radius: 100%;
   margin-top: 5px;
   -webkit-animation:spin 4s linear infinite;
   animation:spin 4s linear infinite;

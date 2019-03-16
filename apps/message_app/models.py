@@ -54,6 +54,12 @@ class CommentManager(models.Manager):
             comment = self.create_comment(data['comment'], message, user)
             return (True, comment)
 
+    def destroy_comment(self, comment_id):
+        comment_id = int(comment_id)
+        comment = Comment.objects.get(id=comment_id)
+        comment.delete()
+        return True
+
 class Comment(models.Model):
     comment = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)

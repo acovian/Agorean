@@ -1,3 +1,7 @@
+*{
+  font-family: times;
+}
+
 #singlepost{
   display: inline-block;
   background-color: white;
@@ -65,6 +69,13 @@
   font-size: 13px;
   margin-left: -5px;
 }
+
+#comment_delete{
+  float: right;
+  margin-right: 10px;
+  color: red;
+}
+
 #delete{
   font-size: 12px;
   display: inline-block;

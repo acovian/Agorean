@@ -6,15 +6,17 @@
 
     <div id="main">
 
+
       <div id="main_body">
+        <img id="gear" src="/media/gear.jpg" alt="">
         <h3>Edit {{user.username}}</h3>
         <form id="edit_form" action="{% url 'user_app:update_information' user.id %}" method="post">
           {% csrf_token %}
-          <input type="text" name="username" value="{{user.username}}"><br>
-          <input type="text" name="first_name" value="{{user.first_name}}"><br>
-          <input type="text" name="last_name" value="{{user.last_name}}"><br>
-          <input type="email" name="email" value="{{user.email}}"><br>
-          <input type="password" name="password" value="{{user.password}}"><br>
+          <input type="text" class="inputclass" name="username" value="{{user.username}}"><br>
+          <input type="text" class="inputclass" name="first_name" value="{{user.first_name}}"><br>
+          <input type="text" class="inputclass" name="last_name" value="{{user.last_name}}"><br>
+          <input type="email" class="inputclass" name="email" value="{{user.email}}"><br>
+          <input type="password" class="inputclass" name="password" value="{{user.password}}"><br>
           <input id="submit" type="submit" name="" value="Save Changes">
         </form>
         <a id="delete_account" href="{% url 'user_app:delete' user.id %}">! DELETE ACCOUNT !</a>

@@ -22,6 +22,10 @@ def delete(request, message_id):
     valid = Message.objects.destroy_message(message_id)
     return redirect(request.META.get('HTTP_REFERER'))
 
+def delete_comment(request, comment_id):
+    valid = Comment.objects.destroy_comment(comment_id)
+    return redirect(request.META.get('HTTP_REFERER'))
+
 def like(request, message_id):
     thing = request.session['user']
     user_id = thing['id']
@@ -42,7 +46,7 @@ def popular(request):
 
 def popularpage(request):
     context = {
-        'posts' : Message.objects.annotate(thing=Count('messagelikes')).order_by('-thing')
+        'posts' : Message.objects.annotate(thing=Count('messagelikes')).order_by('-thing')[:5]
     }
     return render(request, 'message_app/popular.html', context)
 

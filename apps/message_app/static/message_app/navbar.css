@@ -1,4 +1,8 @@
 /* #2a363f */
+*{
+  font-family: times;
+}
+
 a{
   text-decoration: none;
 }

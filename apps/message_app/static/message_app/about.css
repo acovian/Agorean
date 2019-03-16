@@ -1,3 +1,7 @@
+*{
+  font-family: times;
+}
+
 #main{
   background-color: #404853;
   border-top-style: solid;

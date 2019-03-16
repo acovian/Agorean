@@ -25,13 +25,13 @@
     {% block content %}
     {% endblock %}
     <script type="text/javascript">
-    window.onscroll = function() {myFunction()};
+    window.onscroll = function() {followMe()};
 
     var navbar = document.getElementById("navbar");
 
     var sticky = navbar.offsetTop;
 
-    function myFunction() {
+    function followMe() {
       if (window.pageYOffset > sticky) {
         navbar.classList.add("sticky");
       } else {

@@ -34,7 +34,11 @@
   <div id = "comment">
     <hr>
     <a id = "commentuser" href = "{% url 'user_app:user' id=comment.user.id %}">{{comment.user.username}}</a>
-    {{comment.comment}}<br>
+    {{comment.comment}}
+    {% if comment.user.id == request.session.user.id %}
+      <a id="comment_delete" href="{% url 'message_app:delete_comment' comment.id %}">x</a>
+    {% endif %}
+    <br>
   </div>
   {% empty %}
     <p>0 Comments</p>
