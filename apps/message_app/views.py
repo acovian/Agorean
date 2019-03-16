@@ -51,10 +51,10 @@ def popularpage(request):
     return render(request, "message_app/popular.html", context)
 
 def edit(request, message_id):
-	context = {
-		"message": Message.objects.get(id=message_id)
-	}
-	return render(request, "message_app/edit.html", context)
+    context = {
+        "message": Message.objects.get(id=message_id)
+    }
+    return render(request, "message_app/edit.html", context)
 
 def update_information(request, message_id):
     Message.objects.update_information(request.POST, message_id)
