@@ -13,64 +13,64 @@ class UserManager(models.Manager):
             return False
 
     def validate_register(self, data):
-        password = data['password']
+        password = data["password"]
         errors = []
-        if len(data['email'])<=1:
-            errors.append('* email cannot be blank')
-        if len(data['username'])<=1:
-            errors.append('* username cannot be blank')
-        if len(data['first_name'])<1:
-            errors.append('* first name cannot be left empty')
-        if len(data['last_name'])<1:
-            errors.append('* last name cannot be left empty')
+        if len(data["email"])<=1:
+            errors.append("* email cannot be blank")
+        if len(data["username"])<=1:
+            errors.append("* username cannot be blank")
+        if len(data["first_name"])<1:
+            errors.append("* first name cannot be left empty")
+        if len(data["last_name"])<1:
+            errors.append("* last name cannot be left empty")
         if len(password)<=7:
-            errors.append('* password must contain at least eight characters')
-        if password != data['confirm_password']:
-            errors.append('* passwords do not match')
-        if self.filter(email=data['email']).exists():
-            errors.append('* email already exists in database')
-        if self.filter(password=data['password']).exists():
-            errors.append('* password is already taken')
-        if self.filter(username=data['username']).exists():
-            errors.append('* username is already taken')
+            errors.append("* password must contain at least eight characters")
+        if password != data["confirm_password"]:
+            errors.append("* passwords do not match")
+        if self.filter(email=data["email"]).exists():
+            errors.append("* email already exists in database")
+        if self.filter(password=data["password"]).exists():
+            errors.append("* password is already taken")
+        if self.filter(username=data["username"]).exists():
+            errors.append("* username is already taken")
         if errors:
             return (False, errors)
         else:
-            user = self.create_user(data['email'], data['username'], data['first_name'], data['last_name'], data['password'])
+            user = self.create_user(data["email"], data["username"], data["first_name"], data["last_name"], data["password"])
             return (True, user)
 
     def validate_login(self, data):
-        password = data['password']
+        password = data["password"]
         errors = []
-        if len(data['email'])<1:
-            errors.append('* please include an email in order to log in')
+        if len(data["email"])<1:
+            errors.append("* please include an email in order to log in")
         if len(password)<1:
-            errors.append('* please input your password in order to log in')
+            errors.append("* please input your password in order to log in")
         if errors:
             return (False, errors)
         try:
-            user = self.get(email=data['email'])
+            user = self.get(email=data["email"])
             if self.compare_passwords(user, password):
                 return (True, user)
             else:
                 errors.append("* password does not match account")
                 return(False, errors)
         except:
-            errors.append('* account does not yet exist')
+            errors.append("* account does not yet exist")
             return (False, errors)
 
     def update_information(self, data, id):
         user = self.filter(id=id)
-        if data['username']:
-            user.update(username=data['username'])
-        if data['first_name']:
-            user.update(first_name=data['first_name'])
-        if data['last_name']:
-            user.update(last_name=data['last_name'])
-        if data['email']:
-            user.update(email=data['email'])
-        if data['password']:
-            user.update(password=data['password'])
+        if data["username"]:
+            user.update(username=data["username"])
+        if data["first_name"]:
+            user.update(first_name=data["first_name"])
+        if data["last_name"]:
+            user.update(last_name=data["last_name"])
+        if data["email"]:
+            user.update(email=data["email"])
+        if data["password"]:
+            user.update(password=data["password"])
         return True
 
     def destroy_user(self, user_id):
