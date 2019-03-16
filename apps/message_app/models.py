@@ -7,7 +7,7 @@ class MessageManager(models.Manager):
     def validate(self, message, user_id):
         errors = []
         if len(message)<1:
-            errors.append('* Please include a message in order to post one.')
+            errors.append("* Please include a message in order to post one.")
         if errors:
             return (False, errors)
         else:
@@ -23,8 +23,8 @@ class MessageManager(models.Manager):
 
     def update_information(self, data, id):
         message = self.filter(id=id)
-        if data['message']:
-            message.update(message=data['message'])
+        if data["message"]:
+            message.update(message=data["message"])
         return True
 
 class Message(models.Model):
@@ -45,13 +45,13 @@ class CommentManager(models.Manager):
 
     def validate_comment(self, data, user_id, id):
         errors = []
-        if len(data['comment'])<1:
-            errors.append('* Make sure you have written something to comment.')
+        if len(data["comment"])<1:
+            errors.append("* Make sure you have written something to comment.")
             return (False, errors)
         else:
             user = User.objects.get(id=user_id)
             message = Message.objects.get(id=id)
-            comment = self.create_comment(data['comment'], message, user)
+            comment = self.create_comment(data["comment"], message, user)
             return (True, comment)
 
     def destroy_comment(self, comment_id):
@@ -63,7 +63,7 @@ class CommentManager(models.Manager):
 class Comment(models.Model):
     comment = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    message = models.ForeignKey(Message, on_delete=models.CASCADE, related_name='comment')
+    message = models.ForeignKey(Message, on_delete=models.CASCADE, related_name="comment")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -91,7 +91,7 @@ class LikeManager(models.Manager):
 
 class Like(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    message = models.ForeignKey(Message, on_delete=models.CASCADE, related_name='messagelikes')
+    message = models.ForeignKey(Message, on_delete=models.CASCADE, related_name="messagelikes")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
