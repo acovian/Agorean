@@ -14,6 +14,7 @@
 h1{
   color: #6799ff;
 }
+
 h3{
   color: #404853;
 }
@@ -25,6 +26,7 @@ h3{
   color: #6799ff;
   font-weight: bold;
 }
+
 #gear{
   display: inline;
   width: 15px;
@@ -33,6 +35,7 @@ h3{
   -webkit-animation:spin 4s linear infinite;
   animation:spin 4s linear infinite;
 }
+
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); }
 }
 
@@ -48,6 +51,7 @@ h3{
   padding: 100px;
   padding-top: 10px;
 }
+
 #postsuser{
   color: #6799ff;
   font-weight: bold;
@@ -65,106 +69,115 @@ h3{
   margin-bottom: 10px;
   margin-right: 5px;
 }
-  #messageuser{
-    display: block;
-    font-weight: bold;
-    color: #6799ff;
-    text-decoration: none;
-    margin-bottom: 10px;
-  }
-  #tomessage{
-    display: inline-block;
-    width: 640px;
-    height: 50px;
-    font-size: 16px;
-    border-radius: 5px;
-    resize: none;
-  }
 
-  #posts{
-    display: inline-block;
-    background-color: white;
-    margin-left: 200px;
-    padding-top: 20px;
-    padding-left: 100px;
-    padding-right: 100px;
-    width: 650px;
-  }
-    #singlepost{
-      display: inline-block;
-      background-color: white;
-      margin-bottom: 20px;
+#messageuser{
+  display: block;
+  font-weight: bold;
+  color: #6799ff;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
 
-      width: 605px;
-      padding: 20px 20px 0px 20px;
-      border-style: solid;
-      border-width: .05px;
-      border-color: #404853;
-    }
+#tomessage{
+  display: inline-block;
+  width: 640px;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 5px;
+  resize: none;
+}
 
-    #timestamp{
-      font-size: 12px;
-    }
+#posts{
+  display: inline-block;
+  background-color: white;
+  margin-left: 200px;
+  padding-top: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  width: 650px;
+}
 
-    #singlemessage{
-      margin-bottom: 10px;
-    }
+#singlepost{
+  display: inline-block;
+  background-color: white;
+  margin-bottom: 20px;
 
-    #likepost{
-      font-size: 12px;
-      display: inline-block;
-      background-color: #6799ff;
-      color: white;
-      padding: 5px 10px 5px 10px;
-      border-style: none;
-    }
-    #bottompost{
-      display: inline-block;
-      margin-top: 10px;
-      font-style: italic;
-    }
+  width: 605px;
+  padding: 20px 20px 0px 20px;
+  border-style: solid;
+  border-width: .05px;
+  border-color: #404853;
+}
 
-    #comment{
-      display:block;
-      margin-left: 20px;
-      width: 550px;
-      font-size: 15px;
-    }
-    #commentuser{
-      color: #6799ff;
-      text-decoration: none;
-    }
-    #commentaction{
-      margin: 10px;
-      margin-left: 20px;
-    }
-    #writecomment{
-      font-size: 16px;
-      width: 485px;
-    }
-    #postcomment{
-      background-color: #6799ff;
-      border-style: none;
-      color: white;
-      padding: 4px;
-      font-size: 13px;
-      margin-left: -5px;
-    }
-    #delete{
-      font-size: 12px;
-      display: inline-block;
-      float: right;
-      color: #404853;
-      padding: 5px 10px 5px 10px;
-      border-style: none;
-      margin-bottom: 10px;
-    }
+#timestamp{
+  font-size: 12px;
+}
 
-    #edit{
-      font-size: 12px;
-      display: inline-block;
-      color: #404853;
-      padding: 5px 10px 5px 10px;
-      border-style: none;
-      margin-bottom: 10px;
-    }
+#singlemessage{
+  margin-bottom: 10px;
+}
+
+#likepost{
+  font-size: 12px;
+  display: inline-block;
+  background-color: #6799ff;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  border-style: none;
+}
+
+#bottompost{
+  display: inline-block;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+#comment{
+  display:block;
+  margin-left: 20px;
+  width: 550px;
+  font-size: 15px;
+}
+
+#commentuser{
+  color: #6799ff;
+  text-decoration: none;
+}
+
+#commentaction{
+  margin: 10px;
+  margin-left: 20px;
+}
+
+#writecomment{
+  font-size: 16px;
+  width: 485px;
+}
+
+#postcomment{
+  background-color: #6799ff;
+  border-style: none;
+  color: white;
+  padding: 4px;
+  font-size: 13px;
+  margin-left: -5px;
+}
+
+#delete{
+  font-size: 12px;
+  display: inline-block;
+  float: right;
+  color: #404853;
+  padding: 5px 10px 5px 10px;
+  border-style: none;
+  margin-bottom: 10px;
+}
+
+#edit{
+  font-size: 12px;
+  display: inline-block;
+  color: #404853;
+  padding: 5px 10px 5px 10px;
+  border-style: none;
+  margin-bottom: 10px;
+}

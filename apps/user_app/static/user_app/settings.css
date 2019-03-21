@@ -6,6 +6,7 @@ html, body{
   font-size: 17px;
   font-family: times;
 }
+
 #main{
   background-color: #404853;
   border-top-style: solid;
@@ -30,6 +31,7 @@ html, body{
   -webkit-animation:spin 4s linear infinite;
   animation:spin 4s linear infinite;
 }
+
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); }
 }
 
