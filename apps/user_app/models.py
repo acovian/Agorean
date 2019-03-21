@@ -56,7 +56,7 @@ class UserManager(models.Manager):
                 errors.append("* password does not match account")
                 return(False, errors)
         except:
-            errors.append("* account does not yet exist")
+            errors.append("* account does not exist")
             return (False, errors)
 
     def update_information(self, data, id):
