@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang = "en" dir = "ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset = "utf-8">
     <title>{% block page_title %}{% endblock page_title %}</title>
-    <link rel="shortcut icon" href="../media/favicon.ico">
+    <link rel = "shortcut icon" href = "../media/favicon.ico">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'message_app/navbar.css' %}">
+    <link rel = "stylesheet" href = "{% static 'message_app/navbar.css' %}">
   </head>
   <body>
     <div id = "navbar">
-    <div id="agorean">
+    <div id = "agorean">
       <!-- <a id="agorean" href="{% url 'message_app:index' %}"> <img id="squid" src="../media/agorean_squid.jpg" alt=""> -->
-        <a id="agorean" href="{% url 'message_app:index' %}">A G O R E A N</a>
+        <a id = "agorean" href = "{% url 'message_app:index' %}">A G O R E A N</a>
     </div>
     <div id = "rightside">
-      <a href="{% url 'message_app:index' %}" class = "navunit">Home</a>
-      <a href="{% url 'message_app:popular' %}" class = "navunit">Popular</a>
-      <a href="{% url 'message_app:about' %}" class = "navunit">About</a>
-      <a href="{% url 'user_app:user' id=request.session.user.id %}" class = "navunit">Profile</a>
-      <a href="{% url 'user_app:logout' %}" class="navunit">Log Out</a>
+      <a href = "{% url 'message_app:index' %}" class = "navunit">Home</a>
+      <a href = "{% url 'message_app:popular' %}" class = "navunit">Popular</a>
+      <a href = "{% url 'message_app:about' %}" class = "navunit">About</a>
+      <a href = "{% url 'user_app:user' id=request.session.user.id %}" class = "navunit">Profile</a>
+      <a href = "{% url 'user_app:logout' %}" class = "navunit">Log Out</a>
     </div>
     </div>
     <hr>
     {% block content %}
     {% endblock %}
-    <script type="text/javascript">
+    <script type = "text/javascript">
     window.onscroll = function() {followMe()};
 
     var navbar = document.getElementById("navbar");

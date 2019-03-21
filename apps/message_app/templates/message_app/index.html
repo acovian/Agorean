@@ -3,15 +3,15 @@
 {% block page_title %}Agorean | Home{% endblock page_title %}
 {% block content %}
   {% load static %}
-  <link rel="stylesheet" href="{% static 'message_app/index.css' %}">
+  <link rel = "stylesheet" href = "{% static 'message_app/index.css' %}">
   <div id = "main">
 
     <br>
     <div id = "posts">
 
-    <form action = "{% url 'message_app:newmessage' %}" method="post">
+    <form action = "{% url 'message_app:newmessage' %}" method = "post">
       {% csrf_token %}
-      <textarea id = "tomessage" name = "message" placeholder="Hi {{ request.session.user.username }}. Write something to share with the community."></textarea>
+      <textarea id = "tomessage" name = "message" placeholder = "Hi {{ request.session.user.username }}. Write something to share with the community."></textarea>
       <br>
       <input id = "postmessage" type = "submit" value = "Post Message">
     </form>
