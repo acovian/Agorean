@@ -20,8 +20,8 @@ from . import settings
 from django.views.static import serve
 
 urlpatterns = [
-    url(r"^", include("apps.user_app.urls", namespace="user_app")),
-    url(r"^message_app/", include("apps.message_app.urls", namespace="message_app")),
+    url(r"^", include("apps.user_app.urls", namespace = "user_app")),
+    url(r"^message_app/", include("apps.message_app.urls", namespace = "message_app")),
     path("admin/", admin.site.urls),
 ]
 
