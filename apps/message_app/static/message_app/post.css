@@ -49,18 +49,22 @@
   width: 550px;
   font-size: 15px;
 }
+
 #commentuser{
   color: #6799ff;
   text-decoration: none;
 }
+
 #commentaction{
   margin: 10px;
   margin-left: 20px;
 }
+
 #writecomment{
   font-size: 16px;
   width: 485px;
 }
+
 #postcomment{
   background-color: #6799ff;
   border-style: none;

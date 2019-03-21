@@ -28,27 +28,28 @@
   margin-bottom: 10px;
   margin-right: 5px;
 }
-  #messageuser{
-    display: block;
-    font-weight: bold;
-    color: #6799ff;
-    text-decoration: none;
-    margin-bottom: 10px;
-  }
-  #tomessage{
-    width: 640px;
-    height: 50px;
-    font-size: 16px;
-    resize: none;
-    border-radius: 5px;
-  }
+#messageuser{
+  display: block;
+  font-weight: bold;
+  color: #6799ff;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
 
-  #posts{
-    display: inline-block;
-    background-color: white;
-    margin-left: 200px;
-    padding-top: 20px;
-    padding-left: 100px;
-    padding-right: 100px;
-    width: 650px;
-  }
+#tomessage{
+  width: 640px;
+  height: 50px;
+  font-size: 16px;
+  resize: none;
+  border-radius: 5px;
+}
+
+#posts{
+  display: inline-block;
+  background-color: white;
+  margin-left: 200px;
+  padding-top: 20px;
+  padding-left: 100px;
+  padding-right: 100px;
+  width: 650px;
+}
