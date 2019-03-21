@@ -2,7 +2,7 @@
 {% block page_title %}Agorean | {{user.username}}{% endblock page_title %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'user_app/user.css' %}">
+<link rel = "stylesheet" href = "{% static 'user_app/user.css' %}">
 
   <div id = "main">
 
@@ -13,16 +13,16 @@
       <h3>{{user.first_name}} {{user.last_name}}</h3>
 
       {% if user.id == request.session.user.id %}
-      <div id="settings">
-        <img id="gear" src="../media/gear.jpg" alt="">
-        <a id="settings_words" href="{% url 'user_app:settings' user.id %}">Settings</a>
+      <div id = "settings">
+        <img id = "gear" src = "../media/gear.jpg" alt = "">
+        <a id = "settings_words" href = "{% url 'user_app:settings' user.id %}">Settings</a>
       </div>
       {% endif %}
 
       {% if user.id == request.session.user.id %}
         <form action = "{% url 'message_app:newmessage' %}" method="post">
           {% csrf_token %}
-          <textarea id = "tomessage" name = "message" placeholder="Write something to share with the community."></textarea>
+          <textarea id = "tomessage" name = "message" placeholder = "Write something to share with the community."></textarea>
           <br>
           <input id = "postmessage" type = "submit" value = "Post Message">
         </form>
@@ -32,8 +32,8 @@
 
       {% for message in messages %}
       <div id = "singlepost">
-      <a id = "messageuser" href = "{% url 'user_app:user' id=message.user.id %}">{{message.user.username}}</a>
-      <div id="timestamp">
+      <a id = "messageuser" href = "{% url 'user_app:user' id = message.user.id %}">{{message.user.username}}</a>
+      <div id = "timestamp">
         {{message.created_at|timesince}} ago<br><br>
       </div>
       <div id = "singlemessage">{{message.message}}</div>
@@ -80,8 +80,8 @@
         <br>
 
       {% if message.user.id == user.id %}
-        <a id="edit" href="{% url 'message_app:edit' message.id %}">EDIT POST</a>
-        <a id="delete" href="{% url 'message_app:delete' message.id %}">DELETE POST</a>
+        <a id = "edit" href = "{% url 'message_app:edit' message.id %}">EDIT POST</a>
+        <a id = "delete" href = "{% url 'message_app:delete' message.id %}">DELETE POST</a>
       {% endif %}
 
       </div>
