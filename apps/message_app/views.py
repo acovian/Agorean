@@ -46,13 +46,13 @@ def popular(request):
 
 def popularpage(request):
     context = {
-        "posts" : Message.objects.annotate(thing=Count("messagelikes")).order_by("-thing")[:5]
+        "posts" : Message.objects.annotate(thing = Count("messagelikes")).order_by("-thing")[:5]
     }
     return render(request, "message_app/popular.html", context)
 
 def edit(request, message_id):
     context = {
-        "message": Message.objects.get(id=message_id)
+        "message": Message.objects.get(id = message_id)
     }
     return render(request, "message_app/edit.html", context)
 
